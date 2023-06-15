@@ -44,7 +44,7 @@ interface iTokenURI {
     function tokenURI(uint256 _tokenId) external view returns (string memory);
 }
 
-contract NFTContract1155 is RevokableDefaultOperatorFilterer , ERC1155, ERC2981 , Ownable ,AccessControl{
+contract VotingNFT is RevokableDefaultOperatorFilterer , ERC1155, ERC2981 , Ownable ,AccessControl{
     using Strings for uint256;    
 
     string public name;
@@ -54,8 +54,8 @@ contract NFTContract1155 is RevokableDefaultOperatorFilterer , ERC1155, ERC2981 
 
 
     constructor() ERC1155("") {
-        name = "ZQN-DAO Voting NFT";
-        symbol = "ZVN";
+        name = "SIZIMINTOWN Voting NFT";
+        symbol = "SVN";
 
         _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
         grantRole(MINTER_ROLE        , msg.sender);
@@ -72,54 +72,54 @@ contract NFTContract1155 is RevokableDefaultOperatorFilterer , ERC1155, ERC2981 
         addLocalContractAllowList(0x4feE7B061C97C9c496b01DbcE9CDb10c02f0a0Be);//Rarible
 
         //Royalty
-        setDefaultRoyalty(0x40abd10506bC2C62B5Ed6EcD4E97C042afd9927C , 1000);
-        setWithdrawAddress(0x40abd10506bC2C62B5Ed6EcD4E97C042afd9927C);
+        setDefaultRoyalty(0xDC68E2aF8816B3154c95dab301f7838c7D83A0Ba , 1000);
+        setWithdrawAddress(0xDC68E2aF8816B3154c95dab301f7838c7D83A0Ba);
 
         setPhaseId(0);
-        setUseOnChainMetadataWithImageURI(true);
+        setUseOnChainMetadataWithImageURI(false);
 
         setOnChainMetadataWithImageURI(
             0 , 
-            "AKANE" , 
-            "AKANE",
-            "AKANE",
-            "https://arweave.net/a6Pfyubm3YIP4c81VbFNI8UmzzXyBw9aP8BfVWfXBks",
+            "YOSHIDA_BOB_CATLINE" , 
+            "YOSHIDA_BOB_CATLINE",
+            "YOSHIDA_BOB_CATLINE",
+            "ipfs://QmRWAFFtTRdEairCMq2cS9JJ2qpFXVQWn35ayHFgcdjWXd",
             false,
             " "
         );
         setOnChainMetadataWithImageURI(
             1 , 
-            "FUMIKO" , 
-            "FUMIKO",
-            "FUMIKO",
-            "https://arweave.net/gRLA66eiwTPvenfs-gXk_zN0IDW8AXr6Jr-Pk55wmbk",
+            "NEBRICHOF" , 
+            "NEBRICHOF",
+            "NEBRICHOF",
+            "ipfs://QmT1wEN6rmYPXc9xv2FK2AGfL8qXAmU3Qtk7WA7MP1ysk2",
             false,
             " "
         );
         setOnChainMetadataWithImageURI(
             2 , 
-            "MIKA" , 
-            "MIKA",
-            "MIKA",
-            "https://arweave.net/Sa9hL-SJ13cIeuZ0aDxZrJGVfX_PusVBcKcKD8xWumw",
+            "HIGEPLUS" , 
+            "HIGEPLUS",
+            "HIGEPLUS",
+            "ipfs://QmeDzVtsSSGJPCHmFtjHiBxtPftQVkRnPr1B2Jgja1sZkL",
             false,
             " "
         );
         setOnChainMetadataWithImageURI(
             3 , 
-            "KOMACHI" , 
-            "KOMACHI",
-            "KOMACHI",
-            "https://arweave.net/eAXrDTdALbrBz7r_ZMxNbl8WgMBJF84yrdo93Qi6CL0",
+            "GOD_OF_TOILET" , 
+            "GOD_OF_TOILET",
+            "GOD_OF_TOILET",
+            "ipfs://QmUz8zcMWRKNbytszeFWYcAeoPdLdKo5xuJzfszjBvUpu7",
             false,
             " "
         );
         setOnChainMetadataWithImageURI(
             4 , 
-            "SAYAKA" , 
-            "SAYAKA",
-            "SAYAKA",
-            "https://arweave.net/xpAsNtt9ToQgPwtAkFAfirxbWirc-gIXjsSt9xYl96Q",
+            "KANBAN_GIRL_OF_BREAD" , 
+            "KANBAN_GIRL_OF_BREAD",
+            "KANBAN_GIRL_OF_BREAD",
+            "ipfs://QmTmqsrKPiDmPVKNWajLc7cp7dqSe2Z51nfdigq4p8yCwE",
             false,
             " "
         );
@@ -145,7 +145,7 @@ contract NFTContract1155 is RevokableDefaultOperatorFilterer , ERC1155, ERC2981 
     //withdraw section
     //
 
-    address public withdrawAddress = 0xdEcf4B112d4120B6998e5020a6B4819E490F7db6;
+    address public withdrawAddress = 0xDC68E2aF8816B3154c95dab301f7838c7D83A0Ba;
 
     function setWithdrawAddress(address _withdrawAddress) public onlyOwner {
         withdrawAddress = _withdrawAddress;
@@ -394,7 +394,7 @@ contract NFTContract1155 is RevokableDefaultOperatorFilterer , ERC1155, ERC2981 
     }
 
 
-    bool public useBaseURI = false;
+    bool public useBaseURI = true;
     string public baseURI;
     string public baseExtension = ".json";
 
